@@ -1,27 +1,55 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>{{ title }}</title>
-		<meta name="description" content="{{ description }}" />
-		<meta name="theme-color" content="{{ site.themeColor }}" />
-		<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-		<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png" />
-		<link rel="preload" href="assets/fonts/instrument-serif-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href="assets/fonts/ibm-plex-sans-normal-400-600-latin.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		{%- for src in scripts %}
-		<script src="{{ src }}" defer></script>
-		{%- endfor %}
-	</head>
-	<body>
-		<a class="skip" href="#main">Skip to content</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}" />
+    <meta name="theme-color" content="{{ site.themeColor }}" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png" />
+    <link
+      rel="preload"
+      href="assets/fonts/instrument-serif-normal-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/ibm-plex-sans-normal-400-600-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/assets/*" } },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "moderate"
+          }
+        ]
+      }
+    </script>
+    {%- for src in scripts %}
+      <script src="{{ src }}" defer></script>
+    {%- endfor %}
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
 
-		{% include "partials/masthead.liquid" %}
+    {% include 'partials/masthead.liquid' %}
 
-{{ content }}
+    {{ content }}
 
-		{% include "partials/colophon.liquid" %}
-	</body>
+    {% include 'partials/colophon.liquid' %}
+  </body>
 </html>
