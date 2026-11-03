@@ -84,15 +84,12 @@
 }
 
 .brand {
-	display: flex;
-	align-items: center;
-	gap: clamp(0.6rem, 1.2vw, 0.9rem);
+	display: block;
+	color: var(--ink);
 	text-decoration: none;
 
-	& img:first-child {
-		inline-size: clamp(2.5rem, 4vw, 3.25rem);
-	}
-	& img:last-child {
-		inline-size: clamp(8.5rem, 13vw, 11rem);
+	& svg {
+		inline-size: auto;
+		block-size: clamp(2.5rem, 4vw, 3.25rem);
 	}
 }

@@ -31,16 +31,12 @@
 }
 
 .colophon-brand {
-	display: flex;
+	display: block;
 	align-self: start;
-	align-items: center;
-	gap: 1rem;
 
-	& img:first-child {
-		inline-size: 3.5rem;
-	}
-	& img:last-child {
-		inline-size: 11.5rem;
+	& svg {
+		inline-size: auto;
+		block-size: 3.5rem;
 	}
 }
 

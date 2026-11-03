@@ -20,6 +20,16 @@ Nothing under `src/assets/` is post-processed. Eleventy copies the CSS and JS as
 
 When you change a file below, update its notes here.
 
+## Inline SVG and the logo
+
+The `{% svg "name" %}` shortcode (in `eleventy.config.js`) inlines `src/_includes/svg/name.svg` into the markup. Draw these SVGs in `currentColor` so they take the surrounding text colour. They live in `_includes`, not `assets`, because they're never served as files.
+
+`ridgewood-logo.svg` is the seal and wordmark combined into one drawing. It's inlined once, in the masthead. The footer draws it again with `<use href="#ridgewood-logo">`, so the path data isn't repeated on every page.
+
+- **Proportions** follow the original site's header (`.logo`: 3em tall, seal 3em wide, 0.5em gap, wordmark 9em wide with 0.25em top padding). The viewBox uses 96 units per em: the seal is 288 × 288 at the origin. The 288 × 90 wordmark is scaled to 844.8 × 264 (8.8 × 2.75em, as it fit its 9em box) and placed at (345.6, 24). That sits it on the seal's bottom edge, 0.25em below its top. The viewBox is `0 0 1190.4 288`, so the footer's `<svg>` repeats it.
+- **Sizing:** set only `block-size` in CSS. The width follows from the viewBox.
+- **Source files:** the seal and wordmark were the original site's `ridgewood_logo.svg` and `ridgewood_title.svg` (the wordmark is an Adobe Illustrator export). They're combined and optimized with `svgo --multipass -p 1`, which cut them from 39.5 KB to 12.8 KB.
+
 ---
 
 ## Stylesheet architecture: `css/main.css`
@@ -100,13 +110,14 @@ Masthead: logo lockup, primary nav and the client portal link.
 - **Narrow screens:** a two-column grid. The logo and Clients share the top row, and the site nav drops below at full width.
 - **From 40rem:** one row. The logo sits left, with the nav and Clients pushed right.
 - **`margin-inline`** is a margin, not padding, so the hairline stops at the gutters.
+- **`.brand`** pins the logo to `--ink`, so it doesn't pick up the oxblood link hover.
 - **`.masthead-clients`** (client portal) is a compact ghost button. It has the same vertical padding and bottom border as the nav links, so its text shares their baseline. Its `::after` adds ↗ to mark the off-site link.
 
 ### `components/colophon.css`
 
 Footer (colophon).
 
-- Links use `color: inherit` on hover because oxblood would vanish on the blue footer.
+- Links use `color: inherit` on hover because oxblood would vanish on the blue footer. That also keeps the logo (`.colophon-brand`, drawn in `currentColor`) in the footer's paper colour.
 - The address and list items' 1.75 line-height gives 28px rows, which clears the 24px tap-target spacing.
 
 ### `components/text.css`
@@ -251,14 +262,14 @@ Two advances make one full lap each.
 
 **Pause/Play (`.carousel-toggle`).** An icon-only button (named by `aria-label`) drawn in CSS from the button's state: pause bars, or a play triangle. It's square, matching the Next button's height.
 
-**`cycle.js`.** Advances the cycle one step clockwise, by button or every 6s on its own, with a Pause/Play toggle. All motion is CSS. The script only bumps `--turn`, marks each step's position in `data-pos`, and toggles `.is-turning`, which turns transitions on only while moving.
+**`cycle.js`.** Advances the cycle one step clockwise, by button or every 4s on its own, with a Pause/Play toggle. All motion is CSS. The script only bumps `--turn`, marks each step's position in `data-pos`, and toggles `.is-turning`, which turns transitions on only while moving.
 
 - **Positions:** 0 = active (12 o'clock), 1 = previous (3), 2 = opposite (6), 3 = next (9). Non-active slots are `inert`.
 - **Controls** live in the copy block, tied to the carousel by `aria-controls`.
 - **`turn` never wraps,** so the rotation always continues clockwise.
 - **`advance()`** sets `.is-turning` in the same frame the positions change, because transitions only exist while it's set. The class stays on for 1s, until the motion settles.
 - **Auto-advance** is stopped by the Pause button. Reduced-motion users start stopped and can press Play to opt in, and it follows changes to that preference. It's also held while the active card is hovered, or while its link has focus (the keyboard equivalent of hovering). Advancing while the link is focused would make it `inert` and drop focus. The Next button doesn't hold it: clicking a button focuses it, so a focus hold there stopped auto-advance after any click.
-- **Pressing Next** restarts the 6s timer and announces "Step n of 4: Name" in the live status region.
+- **Pressing Next** restarts the 4s timer and announces "Step n of 4: Name" in the live status region.
 
 ### `pages/contact.css`
 
