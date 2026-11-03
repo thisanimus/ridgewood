@@ -14,7 +14,6 @@ body {
 	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
-	hanging-punctuation: first last;
 }
 
 /* Paper grain — a whisper of texture over everything */
