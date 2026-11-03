@@ -1,0 +1,123 @@
+/* Wealth Navigator: compass backdrop and the four domain columns */
+
+/* Wealth Navigator: the original site's compass rose, gigantic and faint,
+   underlaying both the hero and the index list. Decorative only. */
+.compass-stage {
+	/* Where the compass hub lands across the stage. Like the oak's --trunk-x:
+	   % is of the stage width, so the fixed 6rem nudges it right on narrow
+	   screens: ~92% on phones → ~77% on tablets → ~72% on desktop. */
+	--compass-x: clamp(70%, 65% + 6rem, 92%);
+
+	position: relative;
+	isolation: isolate;
+	overflow: clip;
+
+	&::before {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		inset-block-start: 0; /* pinned to the top of the stage */
+		inset-inline-start: var(--compass-x);
+		block-size: min(97.75%, 144.5vw); /* 85% of the original 115% / 170vw */
+		aspect-ratio: 1;
+		translate: -50% 0;
+		rotate: 12deg;
+		background: url('../../img/compass.svg') center / contain no-repeat;
+		opacity: 0.06;
+		pointer-events: none;
+	}
+}
+
+.roadmap {
+	display: grid;
+	gap: var(--space-m) var(--gutter);
+
+	@media (min-width: 40rem) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	@media (min-width: 64rem) {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	& li {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		padding-block-start: 1rem;
+		border-block-start: 2px solid var(--ink);
+	}
+
+	& .roadmap__step {
+		display: flex;
+		justify-content: space-between;
+		color: var(--accent);
+	}
+	& li:not(:last-child) .roadmap__step::after {
+		content: '→';
+		font-family: var(--sans);
+		color: var(--ink);
+	}
+
+	& h2 {
+		font-size: clamp(2rem, 1rem + 2vw, 3rem);
+	}
+	& a {
+		text-decoration: none;
+	}
+	& a:hover {
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+	}
+	& .roadmap__tag {
+		font-family: var(--serif);
+		font-style: italic;
+		font-size: var(--step-1);
+		line-height: 1.2;
+		color: var(--ink-soft);
+	}
+	& p:last-child {
+		font-size: var(--step--1);
+		color: var(--ink-soft);
+	}
+}
+
+/* Wealth Navigator: the four domains in the roadmap layout. Not a
+   sequence, so no step arrows; each column lists its service areas. */
+.roadmap--domains {
+	& li:not(:last-child) .roadmap__step::after {
+		content: none;
+	}
+
+	/* Four across: share rows so taglines and lists line up even when a
+	   name ("Investment Management") wraps to two lines. */
+	@media (min-width: 64rem) {
+		& > li {
+			display: grid;
+			grid-row: span 4;
+			grid-template-rows: subgrid;
+			row-gap: 0.75rem;
+		}
+		& .roadmap__items {
+			align-self: start; /* end each list at its last item */
+		}
+	}
+}
+
+.roadmap__items {
+	margin-block-start: 0.5rem;
+
+	& li {
+		display: block;
+		padding-block: 0.3rem;
+		border: 0; /* override the roadmap column's top rule */
+		font-size: var(--step--1);
+		line-height: 1.45;
+		color: var(--ink-soft);
+	}
+	& small {
+		display: block;
+		margin-block-start: 0.15rem;
+		font-size: 0.9em;
+		color: var(--ink-muted);
+	}
+}

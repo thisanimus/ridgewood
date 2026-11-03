@@ -1,0 +1,38 @@
+/* Legal: contents list and fine print */
+
+.toc {
+	border-block-start: 1px solid var(--ink);
+
+	& a {
+		display: flex;
+		gap: 1rem;
+		align-items: baseline;
+		padding-block: 0.9rem;
+		border-block-end: 1px solid var(--hair);
+		font-family: var(--serif);
+		font-size: var(--step-1);
+		text-decoration: none;
+		&:hover {
+			color: var(--accent);
+		}
+	}
+	& .meta {
+		color: var(--accent);
+	}
+}
+
+.legal-block + .legal-block {
+	margin-block-start: var(--space-l);
+}
+
+.fineprint {
+	font-size: var(--step--1);
+	line-height: 1.7;
+	color: var(--ink-soft);
+
+	@media (min-width: 64rem) {
+		columns: 2;
+		column-gap: var(--gutter);
+		column-rule: 1px solid var(--hair);
+	}
+}

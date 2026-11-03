@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Ridgewood Wealth Management
+   Swiss grid, editorial serif, hairline frames.
+   Each component lives in its own file, imported into its cascade layer.
+   ========================================================================== */
+
+@layer reset, base, layout, components, pages, utilities;
+
+/* self-hosted fonts (@font-face is unaffected by layers) */
+@import url("base/fonts.css");
+
+/* reset */
+@import url("reset/reset.css") layer(reset);
+
+/* base */
+@import url("base/tokens.css") layer(base);
+@import url("base/elements.css") layer(base);
+
+/* layout */
+@import url("layout/sheet.css") layer(layout);
+@import url("layout/grid.css") layer(layout);
+
+/* components */
+@import url("components/text.css") layer(components);
+@import url("components/skip-link.css") layer(components);
+@import url("components/masthead.css") layer(components);
+@import url("components/section-head.css") layer(components);
+@import url("components/headings.css") layer(components);
+@import url("components/prose.css") layer(components);
+@import url("components/button.css") layer(components);
+@import url("components/arrow-link.css") layer(components);
+@import url("components/fig.css") layer(components);
+@import url("components/colophon.css") layer(components);
+@import url("components/reveal.css") layer(components);
+
+/* pages */
+@import url("pages/home.css") layer(pages);
+@import url("pages/page-hero.css") layer(pages);
+@import url("pages/wealth-navigator.css") layer(pages);
+@import url("pages/serif-text.css") layer(pages);
+@import url("pages/about.css") layer(pages);
+@import url("pages/process.css") layer(pages);
+@import url("pages/carousel.css") layer(pages);
+@import url("pages/contact.css") layer(pages);
+@import url("pages/legal.css") layer(pages);
+
+/* utilities */
+@import url("utilities/utilities.css") layer(utilities);
+
+/* unlayered */
+@import url("base/reduced-motion.css");
+@import url("base/view-transitions.css");

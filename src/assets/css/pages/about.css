@@ -1,0 +1,42 @@
+/* About: founder bios */
+
+/* Portrait coin: same height as the founder's name (title-m, line-height 1) */
+.bio__coin {
+	display: block;
+	inline-size: var(--step-3);
+	block-size: auto;
+	aspect-ratio: 1;
+	margin-block: 0 0.75rem;
+	border: 1px solid var(--ink-muted);
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: 50% 50%;
+}
+
+.bio + .bio {
+	margin-block-start: var(--space-xl);
+	padding-block-start: var(--space-xl);
+	border-block-start: 1px solid var(--hair);
+}
+
+.facts {
+	margin-block-start: var(--space-m);
+	border-block-start: 1px solid var(--rule);
+
+	& div {
+		display: grid;
+		grid-template-columns: 7.5rem 1fr;
+		gap: 1rem;
+		padding-block: 0.75rem;
+		border-block-end: 1px solid var(--hair);
+	}
+	& dt {
+		color: var(--ink-muted);
+		padding-block-start: 0.2em;
+	}
+	& dd {
+		font-family: var(--serif);
+		font-size: var(--step-1);
+		line-height: 1.2;
+	}
+}

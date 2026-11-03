@@ -1,0 +1,13 @@
+/* Reduced motion, site-wide. Imported unlayered, as it was in the original
+   single stylesheet. */
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		transition: none !important;
+	}
+}

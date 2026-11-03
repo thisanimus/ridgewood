@@ -1,0 +1,43 @@
+/* Buttons */
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.9em;
+	padding: 1.05em 1.5em;
+	background: var(--blue);
+	color: var(--paper);
+	border: 1px solid var(--blue);
+	font-size: var(--step--2);
+	font-weight: 600;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition:
+		background-color 0.25s ease,
+		color 0.25s ease;
+
+	&::after {
+		content: '→';
+		font-size: 1.3em;
+		letter-spacing: 0;
+		transition: translate 0.25s ease;
+	}
+	&:hover {
+		background: transparent;
+		color: var(--blue);
+	}
+	&:hover::after {
+		translate: 0.3em 0;
+	}
+}
+
+.button--ghost {
+	background: transparent;
+	color: var(--blue);
+
+	&:hover {
+		background: var(--blue);
+		color: var(--paper);
+	}
+}

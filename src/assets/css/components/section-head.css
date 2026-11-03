@@ -1,0 +1,23 @@
+/* Section head row: number, hairline, label */
+
+.section-head {
+	display: flex;
+	align-items: baseline;
+	gap: 1rem;
+	margin-block-end: var(--space-l);
+
+	&::after {
+		content: '';
+		order: 1;
+		flex: 1;
+		border-block-end: 1px solid var(--hair);
+		translate: 0 -0.25em;
+	}
+	& > :first-child {
+		white-space: nowrap;
+	}
+	& > :last-child {
+		order: 2;
+		text-align: end;
+	}
+}

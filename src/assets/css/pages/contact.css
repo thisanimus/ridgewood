@@ -1,0 +1,105 @@
+/* Contact: title and subtitle beside the message form */
+
+.contact {
+	padding-block: var(--space-xl);
+	row-gap: var(--space-l);
+	align-items: start;
+
+	& .title-xl em {
+		color: var(--accent);
+	}
+}
+
+.contact__intro .lede {
+	margin-block-start: var(--space-m);
+}
+
+/* Form: framed sans-serif fields, stacked */
+.contact-form {
+	display: grid;
+	gap: var(--space-m);
+}
+
+.field {
+	display: grid;
+	gap: 0.6rem;
+
+	& input,
+	& textarea {
+		inline-size: 100%;
+		padding: 0.85rem 1rem;
+		border: 1px solid var(--rule);
+		border-radius: 0;
+		background: var(--paper);
+		color: var(--ink);
+		font-family: var(--sans);
+		font-size: var(--step-0);
+		line-height: 1.5;
+		transition: border-color 0.2s ease;
+
+		&::placeholder {
+			color: var(--ink-muted);
+			opacity: 0.7;
+		}
+		&:focus {
+			outline: none;
+			border-color: var(--accent);
+			box-shadow: inset 0 0 0 1px var(--accent); /* thickens the frame to 2px */
+		}
+		&:user-invalid {
+			border-color: var(--accent);
+		}
+	}
+	& textarea {
+		resize: vertical;
+		min-block-size: 10rem;
+	}
+	&:has(:user-invalid) .label::after {
+		content: ' — required';
+		color: var(--accent);
+	}
+}
+
+/* Honeypot: off-screen for people, still in the form for bots */
+.field--trap {
+	position: absolute;
+	inset-inline-start: -100vw;
+	inline-size: 1px;
+	block-size: 1px;
+	overflow: hidden;
+}
+
+.contact-form__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-s) var(--space-m);
+}
+
+/* Confirmations: shown when the Function redirects back with #message-sent
+   or #message-error; once sent, the form hides */
+.form-status {
+	display: none;
+	margin-block-end: var(--space-m);
+	padding: 1rem 1.25rem;
+	border-inline-start: 2px solid var(--ink);
+	background: var(--paper-deep);
+	font-family: var(--serif);
+	font-size: var(--step-1);
+	line-height: 1.35;
+
+	&:target {
+		display: block;
+	}
+	&.form-status--error {
+		border-inline-start-color: var(--accent);
+	}
+	& strong {
+		font-weight: 400;
+		font-style: italic;
+	}
+}
+
+.contact__form:has(#message-sent:target) .contact-form {
+	display: none;
+}

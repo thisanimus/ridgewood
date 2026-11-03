@@ -1,0 +1,30 @@
+/* Display headings */
+
+.display {
+	font-size: var(--step-5);
+	line-height: 0.92;
+	letter-spacing: -0.025em;
+}
+
+.title-xl {
+	font-size: var(--step-6);
+	line-height: 0.86;
+	letter-spacing: -0.03em;
+}
+
+.title-l {
+	font-size: var(--step-4);
+	line-height: 0.95;
+	letter-spacing: -0.02em;
+}
+
+.title-m {
+	font-size: var(--step-3);
+	line-height: 1;
+}
+
+.title-s {
+	font-size: var(--step-2);
+	line-height: 1.08;
+	letter-spacing: 0;
+}

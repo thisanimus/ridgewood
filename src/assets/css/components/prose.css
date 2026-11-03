@@ -1,0 +1,41 @@
+/* Running text: lede, statement, prose, drop cap */
+
+.lede {
+	font-family: var(--serif);
+	font-size: var(--step-2);
+	line-height: 1.22;
+	color: var(--ink-soft);
+	max-inline-size: 30ch;
+}
+
+.statement {
+	font-family: var(--serif);
+	font-size: var(--step-3);
+	line-height: 1.08;
+	letter-spacing: -0.01em;
+	text-wrap: balance;
+}
+
+.prose {
+	max-inline-size: 62ch;
+	color: var(--ink-soft);
+
+	& > * + * {
+		margin-block-start: 1.1em;
+	}
+	& strong {
+		font-weight: 600;
+		color: var(--ink);
+	}
+}
+
+/* Drop cap, where the browser supports real initial letters */
+@supports (initial-letter: 3) or (-webkit-initial-letter: 3) {
+	.dropcap::first-letter {
+		-webkit-initial-letter: 3;
+		initial-letter: 3;
+		font-family: var(--serif);
+		color: var(--ink);
+		margin-inline-end: 0.12em;
+	}
+}

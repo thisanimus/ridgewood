@@ -1,0 +1,12 @@
+/* Serif running text (About intro, Legal) */
+
+.serif-text {
+	font-family: var(--serif);
+	font-size: var(--step-2);
+	line-height: 1.24;
+	letter-spacing: -0.005em;
+
+	& em {
+		color: var(--accent);
+	}
+}

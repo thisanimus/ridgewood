@@ -1,0 +1,9 @@
+/* Cross-document view transitions: same-origin page navigations crossfade
+   using the browser's default animation. Browsers without support simply
+   navigate normally. Skipped for visitors who prefer reduced motion. */
+
+@media (prefers-reduced-motion: no-preference) {
+	@view-transition {
+		navigation: auto;
+	}
+}

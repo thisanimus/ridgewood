@@ -1,0 +1,26 @@
+/* Utilities */
+
+.visually-hidden {
+	position: absolute !important;
+	inline-size: 1px;
+	block-size: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+.mt-s {
+	margin-block-start: var(--space-s);
+}
+
+.mt-m {
+	margin-block-start: var(--space-m);
+}
+
+.mt-l {
+	margin-block-start: var(--space-l);
+}
+
+.pb-xl {
+	padding-block-end: var(--space-xl);
+}

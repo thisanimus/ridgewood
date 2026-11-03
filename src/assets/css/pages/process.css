@@ -1,0 +1,101 @@
+/* Process: hero intro and controls, step detail sections */
+
+.process-hero {
+	align-items: start;
+	padding-block-end: 0; /* the carousel sits flush on the hero's bottom edge */
+	overflow: clip; /* the carousel is clipped only where it meets the hero's edges */
+
+	& .lede {
+		padding-block-start: 0.5rem;
+	}
+}
+
+.process-hero__intro {
+	display: grid;
+	justify-items: start;
+	gap: var(--space-m);
+}
+
+.process-hero__controls {
+	--control: 3rem; /* shared height; the icon-only toggle is this square */
+
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+
+	& .button {
+		block-size: var(--control);
+	}
+}
+
+.numbered {
+	counter-reset: n;
+	display: grid;
+	gap: 0 var(--gutter);
+
+	@media (min-width: 48rem) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	& li {
+		counter-increment: n;
+		padding-block: 1.25rem 1.5rem;
+		border-block-start: 1px solid var(--rule);
+		color: var(--ink-soft);
+
+		&::before {
+			content: counter(n, lower-roman) '.';
+			display: block;
+			margin-block-end: 0.6rem;
+			font-family: var(--serif);
+			font-style: italic;
+			font-size: var(--step-2);
+			line-height: 1;
+			color: var(--accent);
+		}
+	}
+}
+
+.stage-bar {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 4px;
+
+	& span {
+		block-size: 4px;
+		background: var(--hair);
+	}
+	& .is-on {
+		background: var(--ink);
+	}
+}
+
+.fig__heading {
+	font-size: var(--step-3);
+	line-height: 1;
+	& em {
+		color: var(--accent);
+	}
+}
+
+.fig__body {
+	font-size: var(--step--1);
+	line-height: 1.65;
+	color: var(--ink-soft);
+}
+
+.cadence {
+	padding-block-start: 1rem;
+	border-block-start: 1px solid var(--ink);
+
+	& .meta {
+		display: block;
+		margin-block-end: 1rem;
+		color: var(--accent);
+	}
+	& p:last-child {
+		font-family: var(--serif);
+		font-size: var(--step-1);
+		line-height: 1.3;
+	}
+}

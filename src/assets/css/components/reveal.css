@@ -1,0 +1,53 @@
+/* Scroll-driven reveal: content eases in and up as it scrolls into view.
+
+   · Each direct child of a .section (header row, headline, grid…) reveals as
+     one block.
+   · Containers of repeated items (card rows, numbered points, the cadence
+     pair) reveal their children one after another instead; the
+     block holding such a container doesn't animate itself, so motion never
+     compounds.
+   · Progress is measured as a share of each element's own entry into the
+     viewport (capped at 18rem of scroll), so everything has fully appeared by
+     the time it can be scrolled to — nothing at the foot of a page is left
+     half-faded.
+   Skipped for reduced motion and in browsers without scroll timelines. */
+
+@keyframes ease-in-up {
+	from {
+		opacity: 0;
+		translate: 0 2.5rem;
+		animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	@supports (animation-timeline: view()) {
+		/* Section blocks — the second line reaches one level into a block that
+		   holds a staggered container, so its other children still reveal */
+		.section > :not(:is(.figs, .numbered, .grid:has(> .cadence))):not(:has(:is(.figs, .numbered, .grid:has(> .cadence)))),
+		.section > :has(:is(.figs, .numbered, .grid:has(> .cadence))) > :not(:is(.figs, .numbered, .grid:has(> .cadence))):not(:has(:is(.figs, .numbered, .grid:has(> .cadence)))),
+		/* Repeated items, staggered by --i */
+		.section :is(.figs, .numbered, .grid:has(> .cadence)) > * {
+			animation: ease-in-up linear both;
+			animation-timeline: view();
+			animation-range:
+				entry min(80%, calc(var(--i, 0) * 12%))
+				entry min(100%, calc(18rem + var(--i, 0) * 4rem), calc(60% + var(--i, 0) * 15%));
+		}
+
+		.section :is(.figs, .numbered, .grid:has(> .cadence)) > * {
+			&:nth-child(2) {
+				--i: 1;
+			}
+			&:nth-child(3) {
+				--i: 2;
+			}
+			&:nth-child(4) {
+				--i: 3;
+			}
+			&:nth-child(n + 5) {
+				--i: 4;
+			}
+		}
+	}
+}

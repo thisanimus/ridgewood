@@ -1,0 +1,37 @@
+/* Reset */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+html {
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+img,
+svg {
+	display: block;
+	max-inline-size: 100%;
+	block-size: auto;
+}
+
+ol,
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+a {
+	color: inherit;
+}
+
+button {
+	font: inherit;
+}

@@ -1,0 +1,167 @@
+/* Home: hero with the oak, trust, principles, call to action */
+
+.hero {
+	position: relative;
+	isolation: isolate;
+	overflow: clip;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	min-block-size: clamp(34rem, 47vw, 70rem);
+	padding-block: var(--space-xl) var(--space-l);
+	background: var(--paper); /* backdrop for the photo's multiply blend */
+
+	& .display {
+		margin-block-start: var(--space-m);
+		max-inline-size: 15ch;
+	}
+	& .display em {
+		color: var(--accent);
+	}
+	& .display + h2 {
+		margin-block-start: var(--space-m); /* clears the headline's descenders */
+	}
+}
+
+/* Lone oak, right-aligned. The photo fills the hero's height and is pinned
+     by its trunk (71.3% across the source image), so the canopy may bleed off
+     the right edge. Masks fade it out behind the type.
+     Monochrome blue: the grayscale photo is screened over a blue fill
+     (shadows → primary blue, highlights → white), then multiplied onto the
+     paper so the whites drop out to cream. */
+.hero__media {
+	/* Where the trunk lands across the hero. % is of the hero's width, so the
+       fixed 5rem is a bigger share on narrow screens and nudges the trunk right:
+       ~95% on phones → ~85% on tablets → ~80% on desktop → 78% very wide. */
+	--trunk-x: clamp(60%, 60% + 10rem, 105%);
+
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	opacity: 0.4;
+	background: var(--blue);
+	mix-blend-mode: multiply;
+	pointer-events: none;
+	mask-image:
+		linear-gradient(to right, transparent 0%, transparent 30%, #000 60%),
+		linear-gradient(to bottom, transparent 0%, #000 25%, #000 88%, transparent 100%);
+	mask-composite: intersect;
+
+	& img {
+		position: absolute;
+		inset-block: 0;
+		inset-inline-start: var(--trunk-x);
+		inline-size: auto;
+		block-size: 100%;
+		max-inline-size: none;
+		translate: -71.3% 0;
+		filter: grayscale(1) contrast(1.2) brightness(1.1);
+		mix-blend-mode: screen;
+	}
+
+	@media (prefers-contrast: more) {
+		display: none;
+	}
+}
+
+.contents {
+	display: grid;
+	column-gap: var(--gutter);
+	margin-block-start: var(--space-m);
+	max-inline-size: 40rem;
+	border-block-start: 1px solid var(--rule);
+
+	@media (min-width: 40rem) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	@media (min-width: 64rem) {
+		max-inline-size: min(40rem, 46%); /* stay clear of the canopy */
+	}
+
+	& a {
+		padding-block: 0.8rem;
+		border-block-end: 1px solid var(--hair);
+		font-family: var(--serif);
+		font-size: var(--step-1);
+		line-height: 1.15;
+		text-decoration: none;
+		transition:
+			color 0.2s ease,
+			padding 0.25s ease;
+	}
+	& a:hover {
+		padding-inline-start: 0.4rem;
+	}
+	& em {
+		display: block;
+		font-size: 0.8em;
+		color: var(--ink-muted);
+	}
+}
+
+.trust__heading {
+	max-inline-size: 16ch;
+}
+
+.trust__statement {
+	& em {
+		color: var(--accent);
+	}
+}
+
+.principles__title {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	grid-template-rows: 1fr auto;
+	align-items: end;
+	column-gap: var(--gutter);
+	margin-block-end: var(--space-l);
+
+	& .principles__numeral {
+		grid-row: 1 / span 2;
+		font-size: clamp(9rem, 4rem + 20vw, 22rem);
+		line-height: 0.74;
+		letter-spacing: -0.04em;
+		color: var(--accent);
+	}
+	& .principles__pre {
+		margin-block-end: 0.5rem;
+		font-style: italic;
+		font-size: var(--step-2);
+		color: var(--ink-soft);
+	}
+	& .principles__post {
+		font-size: var(--step-4);
+		line-height: 0.95;
+		letter-spacing: -0.02em;
+	}
+}
+
+/* Cards: everything in primary blue; only the number eyebrow in oxblood */
+.principles__cards .fig__foot .accent {
+	color: var(--ink);
+}
+
+.cta {
+	align-items: end;
+}
+
+.cta__title em {
+	color: var(--accent);
+}
+
+.cta__body {
+	display: grid;
+	gap: var(--space-m);
+	justify-items: start;
+}
+
+.cta__phone {
+	font-family: var(--serif);
+	font-size: var(--step-3);
+	line-height: 1;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+}

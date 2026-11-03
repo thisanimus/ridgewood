@@ -1,0 +1,11 @@
+/* Inner page hero */
+
+.page-hero {
+	padding-block: var(--space-xl) var(--space-l);
+	row-gap: var(--space-l);
+	align-items: end;
+
+	& .title-xl em {
+		color: var(--accent);
+	}
+}
