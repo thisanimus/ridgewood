@@ -10,6 +10,7 @@ export default function (eleventyConfig) {
 	// Static assets (CSS component files, images, JS, documents) are copied as-is;
 	// main.css @imports each CSS component file at runtime.
 	eleventyConfig.addPassthroughCopy("src/assets");
+	eleventyConfig.addPassthroughCopy("src/robots.txt");
 
 	return {
 		dir: {
