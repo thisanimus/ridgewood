@@ -8,7 +8,7 @@
 					{%- for item in site.nav %}
 					<li><a href="{{ item.href }}"{% if item.key == nav %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
 					{%- endfor %}
-					<li><a href="{{ site.clientPortal }}">Clients</a></li>
 				</ol>
 			</nav>
+			<a class="masthead-clients" href="{{ site.clientPortal }}">Clients</a>
 		</header>

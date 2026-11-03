@@ -1,22 +1,51 @@
-/* Masthead: logo lockup and primary nav */
+/* Masthead: logo lockup, primary nav and the client portal link */
 
 .masthead {
-	display: flex;
-	flex-wrap: wrap;
+	/* Spacing between nav links, and between the nav and Clients */
+	--nav-gap: clamp(1rem, 2.2vw, 2rem);
+
+	/* Narrow screens: the logo and Clients share the top row; the site nav
+	   drops below, full width */
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-areas:
+		'brand clients'
+		'nav nav';
 	align-items: end;
 	justify-content: space-between;
-	gap: var(--space-s) var(--space-m);
+	gap: var(--space-s) var(--nav-gap);
 	margin-inline: var(--gutter); /* margin, not padding, so the hairline stops at the gutters */
 	padding-block: var(--space-m) 1.25rem;
 	border-block-end: 1px solid var(--rule);
 
+	/* Wide enough for one row: logo, then the nav and Clients pushed right */
+	@media (min-width: 40rem) {
+		grid-template-columns: auto minmax(0, 1fr) auto;
+		grid-template-areas: 'brand nav clients';
+		justify-content: stretch;
+
+		& nav {
+			justify-self: end;
+		}
+	}
+
+	& .brand {
+		grid-area: brand;
+	}
+	& nav {
+		grid-area: nav;
+	}
+	& .masthead-clients {
+		grid-area: clients;
+	}
+
 	& nav ol {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.4rem clamp(1rem, 2.2vw, 2rem);
+		gap: 0.4rem var(--nav-gap);
 	}
 
-	& nav a {
+	& :is(nav a, .masthead-clients) {
 		display: inline-flex;
 		align-items: baseline;
 		gap: 0.4em;
@@ -38,11 +67,28 @@
 		}
 	}
 
-	/* off-site link (the client portal) */
-	& nav a[href^='http']::after {
-		content: '↗';
-		font-size: 0.85em;
-		margin-inline-start: 0.15em;
+	/* Client portal: a compact ghost button. Same vertical padding and bottom
+	   border as the nav links, so its text shares their baseline. */
+	& .masthead-clients {
+		padding-inline: 0.9rem 0.8rem;
+		border: 1px solid var(--blue);
+		color: var(--blue);
+		transition:
+			background-color 0.25s ease,
+			color 0.25s ease;
+
+		&:hover {
+			border-color: var(--blue);
+			background: var(--blue);
+			color: var(--paper);
+		}
+
+		/* off-site link */
+		&::after {
+			content: '↗';
+			font-size: 0.85em;
+			margin-inline-start: 0.15em;
+		}
 	}
 }
 

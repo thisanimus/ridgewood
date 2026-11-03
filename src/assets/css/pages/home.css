@@ -61,6 +61,26 @@
 	}
 }
 
+/* Faint parallax: the oak drifts down at ~15% of the scroll speed over the
+   first screenful, so it lags behind the type. Anchored to scroll 0, it rests
+   exactly where it's placed above, and the gap it opens at the top always
+   stays above the viewport. */
+@keyframes oak-drift {
+	to {
+		translate: -71.3% 15vh; /* keeps the trunk anchor from .hero-media img */
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	@supports (animation-timeline: scroll()) {
+		.hero-media img {
+			animation: oak-drift linear both;
+			animation-timeline: scroll(root);
+			animation-range: 0 100vh;
+		}
+	}
+}
+
 .contents {
 	display: grid;
 	column-gap: var(--gutter);

@@ -28,6 +28,23 @@
 	}
 }
 
+/* The compass turns slowly clockwise as the page scrolls: 12deg at the top
+   of the page to 20deg at the bottom. */
+@keyframes compass-turn {
+	to {
+		rotate: 20deg;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	@supports (animation-timeline: scroll()) {
+		.compass-stage::before {
+			animation: compass-turn linear both;
+			animation-timeline: scroll(root);
+		}
+	}
+}
+
 /* The four domains, side by side. Not a sequence, so no step arrows; each
    column lists its service areas. */
 .domains {
