@@ -1,4 +1,4 @@
-/* Display headings */
+/* Display headings. Emphasis in the largest sizes is set in oxblood. */
 
 .display {
 	font-size: var(--step-5);
@@ -10,6 +10,10 @@
 	font-size: var(--step-6);
 	line-height: 0.86;
 	letter-spacing: -0.03em;
+}
+
+:is(.display, .title-xl) em {
+	color: var(--accent);
 }
 
 .title-l {

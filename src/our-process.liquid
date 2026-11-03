@@ -11,17 +11,17 @@ scripts:
 	<section class="page-hero process-hero wrap grid" aria-labelledby="page-title">
 		<p class="label accent">Discover • Strategize • Implement • Communicate</p>
 		<h1 id="page-title" class="title-xl">Our <em>Process</em></h1>
-		<div class="process-hero__intro span-5">
+		<div class="process-hero-intro span-5">
 			<p class="lede">
 				We understand that financial planning and management is an ongoing process, that’s why we’ve developed
 				this roadmap to creating, preserving, and transferring wealth:
 			</p>
-			<div class="process-hero__controls">
-				<button class="button carousel__next" type="button" aria-controls="process-cycle" hidden>
+			<div class="process-hero-controls">
+				<button class="button carousel-next" type="button" aria-controls="process-cycle" hidden>
 					Next step
 				</button>
 				<button
-					class="button button--ghost carousel__toggle"
+					class="button button-ghost carousel-toggle"
 					type="button"
 					aria-controls="process-cycle"
 					aria-label="Pause"
@@ -31,54 +31,54 @@ scripts:
 		</div>
 
 		<!-- The roadmap is a continual loop: the steps ride a circular track
-             clockwise; the active step sits at 12 o'clock with the next one
-             peeking in at 9. assets/js/cycle.js advances it. Without JS,
-             Discover shows and the button stays hidden. -->
+		     clockwise; the active step sits at 12 o'clock with the next one
+		     peeking in at 9. assets/js/cycle.js advances it. Without JS,
+		     Discover shows and the button stays hidden. -->
 		<div class="carousel span-7 start-6" id="process-cycle" data-carousel>
-			<div class="carousel__stage">
-				<span class="carousel__ring" aria-hidden="true"></span>
-				<span class="carousel__arrow carousel__arrow--in" aria-hidden="true"></span>
-				<span class="carousel__arrow carousel__arrow--out" aria-hidden="true"></span>
-				<ol class="carousel__track" aria-label="The roadmap, a continual cycle">
-					<li class="carousel__slot" style="--i: 0" data-pos="0">
-						<div class="carousel__face">
-							<p class="carousel__num meta">01 / 04</p>
-							<h2 class="carousel__name"><a href="#discover">Discover</a></h2>
-							<p class="carousel__tag">Getting to Know You</p>
-							<p class="carousel__text">We put in the time and effort to understand you and your goals.</p>
+			<div class="carousel-stage">
+				<span class="carousel-ring" aria-hidden="true"></span>
+				<span class="carousel-arrow carousel-arrow-in" aria-hidden="true"></span>
+				<span class="carousel-arrow carousel-arrow-out" aria-hidden="true"></span>
+				<ol aria-label="The roadmap, a continual cycle">
+					<li class="carousel-slot" style="--i: 0" data-pos="0">
+						<div class="carousel-face">
+							<p class="meta accent">01 / 04</p>
+							<h2 class="carousel-name"><a href="#discover">Discover</a></h2>
+							<p class="carousel-tag">Getting to Know You</p>
+							<p class="carousel-text">We put in the time and effort to understand you and your goals.</p>
 						</div>
 					</li>
-					<li class="carousel__slot" style="--i: 1" data-pos="3" inert>
-						<div class="carousel__face">
-							<p class="carousel__num meta">02 / 04</p>
-							<h2 class="carousel__name"><a href="#strategize">Strategize</a></h2>
-							<p class="carousel__tag">Making the Plan</p>
-							<p class="carousel__text">
+					<li class="carousel-slot" style="--i: 1" data-pos="3" inert>
+						<div class="carousel-face">
+							<p class="meta accent">02 / 04</p>
+							<h2 class="carousel-name"><a href="#strategize">Strategize</a></h2>
+							<p class="carousel-tag">Making the Plan</p>
+							<p class="carousel-text">
 								We use the knowledge gained in discovery to craft the best plan to achieve your goals.
 							</p>
 						</div>
 					</li>
-					<li class="carousel__slot" style="--i: 2" data-pos="2" inert>
-						<div class="carousel__face">
-							<p class="carousel__num meta">03 / 04</p>
-							<h2 class="carousel__name"><a href="#implement">Implement</a></h2>
-							<p class="carousel__tag">Working the Plan</p>
-							<p class="carousel__text">
+					<li class="carousel-slot" style="--i: 2" data-pos="2" inert>
+						<div class="carousel-face">
+							<p class="meta accent">03 / 04</p>
+							<h2 class="carousel-name"><a href="#implement">Implement</a></h2>
+							<p class="carousel-tag">Working the Plan</p>
+							<p class="carousel-text">
 								We carry out the plan in a way that accommodates your needs, and accomplishes your goals.
 							</p>
 						</div>
 					</li>
-					<li class="carousel__slot" style="--i: 3" data-pos="1" inert>
-						<div class="carousel__face">
-							<p class="carousel__num meta">04 / 04</p>
-							<h2 class="carousel__name"><a href="#communicate">Communicate</a></h2>
-							<p class="carousel__tag">Staying in touch</p>
-							<p class="carousel__text">We meet regularly to keep you informed, and get your input.</p>
+					<li class="carousel-slot" style="--i: 3" data-pos="1" inert>
+						<div class="carousel-face">
+							<p class="meta accent">04 / 04</p>
+							<h2 class="carousel-name"><a href="#communicate">Communicate</a></h2>
+							<p class="carousel-tag">Staying in touch</p>
+							<p class="carousel-text">We meet regularly to keep you informed, and get your input.</p>
 						</div>
 					</li>
 				</ol>
 			</div>
-			<p class="carousel__status visually-hidden" role="status"></p>
+			<p class="carousel-status visually-hidden" role="status"></p>
 		</div>
 	</section>
 
@@ -116,29 +116,29 @@ scripts:
 		</div>
 		<h2 id="strategize-title" class="title-l">Strategize</h2>
 
-		<div class="figs figs--3 mt-l">
-			<article class="fig fig--short">
+		<div class="figs figs-3 mt-l">
+			<article class="fig fig-short">
 				<div class="stage-bar" aria-hidden="true"><span class="is-on"></span><span></span><span></span></div>
-				<h3 class="fig__heading">For those <em>saving for retirement</em></h3>
-				<p class="fig__body">
+				<h3 class="fig-heading">For those <em>saving for retirement</em></h3>
+				<p class="fig-body">
 					We create an overall financial plan that includes savings strategies, tax efficiency, cash flow, asset
 					growth, benefits optimization, and charitable giving (if applicable).
 				</p>
 			</article>
-			<article class="fig fig--short">
+			<article class="fig fig-short">
 				<div class="stage-bar" aria-hidden="true"><span></span><span class="is-on"></span><span></span></div>
-				<h3 class="fig__heading">For those <em>approaching retirement</em></h3>
-				<p class="fig__body">
+				<h3 class="fig-heading">For those <em>approaching retirement</em></h3>
+				<p class="fig-body">
 					You are nearing the finish line. Your strategy needs to take into consideration the impact of the market
 					over the next few years as well as the rest of your life. We create a financial plan taking advantage of
 					IRS allowed maximum savings opportunities, pre-retiree protection strategies, debt reduction, and
 					addressing other risks to your retirement to ensure you stick the landing when that time comes.
 				</p>
 			</article>
-			<article class="fig fig--short">
+			<article class="fig fig-short">
 				<div class="stage-bar" aria-hidden="true"><span></span><span></span><span class="is-on"></span></div>
-				<h3 class="fig__heading">For those <em>in retirement</em></h3>
-				<p class="fig__body">
+				<h3 class="fig-heading">For those <em>in retirement</em></h3>
+				<p class="fig-body">
 					The rules have changed for you… so should your investment strategy. We craft personal income and
 					investment strategies to address your fundamental expense needs, your discretionary spending, and any
 					legacy/estate planning needs you may have for future generations.
@@ -162,7 +162,7 @@ scripts:
 				</p>
 				<p class="statement mt-m">
 					This is the step in the process where we take your vision for the future and take the steps necessary to
-					<em class="accent">make that vision a reality.</em>
+					<em>make that vision a reality.</em>
 				</p>
 			</div>
 		</div>
@@ -177,14 +177,14 @@ scripts:
 		<div class="grid">
 			<h2 id="communicate-title" class="title-l">Communicate</h2>
 			<div class="cadence span-4 start-5">
-				<span class="meta">Regularly</span>
+				<p class="meta accent">Regularly</p>
 				<p>
 					We meet regularly to review your plan and adapt it to accommodate developments in your life and changes
 					in the markets.
 				</p>
 			</div>
 			<div class="cadence span-4">
-				<span class="meta">Annually</span>
+				<p class="meta accent">Annually</p>
 				<p>
 					We also hold an annual meeting to review the overall financial plan and evaluate progress toward your
 					financial goals.

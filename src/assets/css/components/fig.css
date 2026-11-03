@@ -1,14 +1,15 @@
-/* Figure cards (after the reference’s FIG. 01 / FIG. 02 panels) */
+/* Figure cards (after the reference’s FIG. 01 / FIG. 02 panels).
+   Home: number, big title, footnote. Process: stage bar, heading, body. */
 
 .figs {
 	display: grid;
 	gap: clamp(1rem, 2vw, 1.5rem);
 
 	@media (min-width: 48rem) {
-		&.figs--2 {
+		&.figs-2 {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
-		&.figs--3 {
+		&.figs-3 {
 			grid-template-columns: repeat(3, minmax(0, 1fr));
 		}
 	}
@@ -24,43 +25,19 @@
 	background: var(--paper);
 	min-block-size: clamp(20rem, 34vw, 30rem);
 
-	&.fig--tint {
-		background: var(--paper-deep);
-	}
-	&:is(a) {
-		text-decoration: none;
-		transition:
-			color 0.2s ease,
-			border-color 0.25s ease;
-	}
-	&:is(a):hover {
-		border-color: var(--ink);
-	}
-	&.fig--short {
+	&.fig-short {
 		min-block-size: 0;
 	}
 }
 
-.fig__label {
-	color: var(--accent);
-}
-
-.fig__title {
-	display: block;
+.fig-title {
 	margin-block-start: var(--space-s);
-	font-family: var(--serif);
-	font-weight: 400;
 	font-size: clamp(2.5rem, 15cqi, 7rem);
 	line-height: 0.9;
-	letter-spacing: -0.01em;
 	text-transform: uppercase;
 }
 
-.fig__title--l {
-	font-size: clamp(2.75rem, 17cqi, 7rem);
-}
-
-.fig__foot {
+.fig-foot {
 	margin-block-start: auto;
 	padding-block-start: 1.1rem;
 	border-block-start: 1px solid var(--rule);
@@ -69,7 +46,21 @@
 	font-size: var(--step-1);
 	line-height: 1.25;
 
-	& .accent {
+	& span {
 		display: block;
 	}
+}
+
+.fig-heading {
+	font-size: var(--step-3);
+
+	& em {
+		color: var(--accent);
+	}
+}
+
+.fig-body {
+	font-size: var(--step--1);
+	line-height: 1.65;
+	color: var(--ink-soft);
 }

@@ -18,12 +18,10 @@
 	<body>
 		<a class="skip" href="#main">Skip to content</a>
 
-		<div class="sheet">
-			{% include "partials/masthead.liquid" %}
+		{% include "partials/masthead.liquid" %}
 
 {{ content }}
 
-			{% include "partials/colophon.liquid" %}
-		</div>
+		{% include "partials/colophon.liquid" %}
 	</body>
 </html>

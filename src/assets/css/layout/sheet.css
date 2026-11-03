@@ -1,6 +1,6 @@
 /* Page frame (the bordered sheet), wrap and section rhythm */
 
-.sheet {
+body {
 	max-inline-size: 110rem;
 	margin: var(--frame) max(var(--frame), (100% - 110rem) / 2); /* centred once capped */
 	border: 1px solid var(--rule);
@@ -22,6 +22,6 @@ main {
 	border-block-start: 1px solid var(--rule);
 }
 
-.section--tint {
+.section-tint {
 	background: var(--paper-deep);
 }

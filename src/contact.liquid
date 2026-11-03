@@ -9,7 +9,7 @@ scripts:
 ---
 <main id="main">
 	<section class="contact wrap grid" aria-labelledby="page-title">
-		<div class="contact__intro span-5">
+		<div class="span-5">
 			<h1 id="page-title" class="title-xl">Contact</h1>
 			<p class="lede">Whether you’re ready to get started, or just curious about what we can do for you, <em>we’d love to hear from you.</em></p>
 		</div>
@@ -26,16 +26,16 @@ scripts:
 			    in the Function
 			The confirmations below show via :target, no page JavaScript needed.
 		-->
-		<div class="contact__form span-6 start-7">
+		<div class="span-6 start-7">
 			<p class="form-status" id="message-sent" role="status">
 				<strong>Thank you.</strong> Your message is on its way — we’ll be in touch soon.
 			</p>
-			<p class="form-status form-status--error" id="message-error" role="alert">
+			<p class="form-status form-status-error" id="message-error" role="alert">
 				<strong>Sorry, something went wrong.</strong> Please try again, or call us at
 				<a href="tel:{{ site.phone.tel }}">{{ site.phone.display }}</a>.
 			</p>
 
-			<form class="contact-form" action="/api/contact" method="post">
+			<form action="/api/contact" method="post">
 				<div class="field">
 					<label class="label" for="cf-name">Name</label>
 					<input id="cf-name" name="name" type="text" autocomplete="name" autocapitalize="words" spellcheck="false" placeholder="Jane Smith" required maxlength="200">
@@ -49,14 +49,14 @@ scripts:
 					<textarea id="cf-message" name="message" rows="7" autocomplete="off" placeholder="I’m approaching retirement and would like to talk about an income strategy and our estate plan." required maxlength="5000"></textarea>
 				</div>
 				<!-- Honeypot: hidden from people, often filled in by bots -->
-				<div class="field--trap" aria-hidden="true">
+				<div class="honeypot" aria-hidden="true">
 					<label for="cf-company">Company</label>
 					<input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off">
 				</div>
 				{%- if site.turnstileSiteKey %}
 				<div class="cf-turnstile" data-sitekey="{{ site.turnstileSiteKey }}" data-size="flexible" data-theme="light"></div>
 				{%- endif %}
-				<div class="contact-form__actions">
+				<div class="actions">
 					<button class="button" type="submit">Send message</button>
 					<p class="meta muted">All fields required</p>
 				</div>

@@ -10,13 +10,13 @@
 	}
 }
 
-.process-hero__intro {
+.process-hero-intro {
 	display: grid;
 	justify-items: start;
 	gap: var(--space-m);
 }
 
-.process-hero__controls {
+.process-hero-controls {
 	--control: 3rem; /* shared height; the icon-only toggle is this square */
 
 	display: flex;
@@ -70,28 +70,12 @@
 	}
 }
 
-.fig__heading {
-	font-size: var(--step-3);
-	line-height: 1;
-	& em {
-		color: var(--accent);
-	}
-}
-
-.fig__body {
-	font-size: var(--step--1);
-	line-height: 1.65;
-	color: var(--ink-soft);
-}
-
 .cadence {
 	padding-block-start: 1rem;
 	border-block-start: 1px solid var(--ink);
 
 	& .meta {
-		display: block;
 		margin-block-end: 1rem;
-		color: var(--accent);
 	}
 	& p:last-child {
 		font-family: var(--serif);

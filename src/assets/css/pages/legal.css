@@ -12,12 +12,6 @@
 		font-family: var(--serif);
 		font-size: var(--step-1);
 		text-decoration: none;
-		&:hover {
-			color: var(--accent);
-		}
-	}
-	& .meta {
-		color: var(--accent);
 	}
 }
 

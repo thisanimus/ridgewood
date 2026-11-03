@@ -5,19 +5,36 @@
 	row-gap: var(--space-l);
 	align-items: start;
 
-	& .title-xl em {
-		color: var(--accent);
+	& .lede {
+		margin-block-start: var(--space-m);
 	}
-}
 
-.contact__intro .lede {
-	margin-block-start: var(--space-m);
-}
+	/* Form: framed sans-serif fields, stacked */
+	& form {
+		display: grid;
+		gap: var(--space-m);
+	}
 
-/* Form: framed sans-serif fields, stacked */
-.contact-form {
-	display: grid;
-	gap: var(--space-m);
+	/* once sent, the form hides behind its confirmation */
+	&:has(#message-sent:target) form {
+		display: none;
+	}
+
+	& .actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--space-s) var(--space-m);
+	}
+
+	/* Off-screen for people, still in the form for bots */
+	& .honeypot {
+		position: absolute;
+		inset-inline-start: -100vw;
+		inline-size: 1px;
+		block-size: 1px;
+		overflow: hidden;
+	}
 }
 
 .field {
@@ -60,24 +77,8 @@
 	}
 }
 
-/* Honeypot: off-screen for people, still in the form for bots */
-.field--trap {
-	position: absolute;
-	inset-inline-start: -100vw;
-	inline-size: 1px;
-	block-size: 1px;
-	overflow: hidden;
-}
-
-.contact-form__actions {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	gap: var(--space-s) var(--space-m);
-}
-
 /* Confirmations: shown when the Function redirects back with #message-sent
-   or #message-error; once sent, the form hides */
+   or #message-error */
 .form-status {
 	display: none;
 	margin-block-end: var(--space-m);
@@ -91,15 +92,11 @@
 	&:target {
 		display: block;
 	}
-	&.form-status--error {
+	&.form-status-error {
 		border-inline-start-color: var(--accent);
 	}
 	& strong {
 		font-weight: 400;
 		font-style: italic;
 	}
-}
-
-.contact__form:has(#message-sent:target) .contact-form {
-	display: none;
 }

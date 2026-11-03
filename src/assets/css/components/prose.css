@@ -1,4 +1,4 @@
-/* Running text: lede, statement, prose, drop cap */
+/* Running text: lede, statement, serif text, prose, drop cap */
 
 .lede {
 	font-family: var(--serif);
@@ -14,6 +14,22 @@
 	line-height: 1.08;
 	letter-spacing: -0.01em;
 	text-wrap: balance;
+
+	& em {
+		color: var(--accent);
+	}
+}
+
+/* Serif running text (About intro, Legal) */
+.serif-text {
+	font-family: var(--serif);
+	font-size: var(--step-2);
+	line-height: 1.24;
+	letter-spacing: -0.005em;
+
+	& em {
+		color: var(--accent);
+	}
 }
 
 .prose {

@@ -39,11 +39,6 @@ h4 {
 	text-wrap: balance;
 }
 
-:is(h1, h2, h3, h4) em,
-.serif em {
-	font-style: italic;
-}
-
 p,
 li,
 dd {

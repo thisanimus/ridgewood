@@ -1,7 +1,7 @@
 /* Wealth Navigator: compass backdrop and the four domain columns */
 
-/* Wealth Navigator: the original site's compass rose, gigantic and faint,
-   underlaying both the hero and the index list. Decorative only. */
+/* The original site's compass rose, gigantic and faint, underlaying both the
+   hero and the domain list. Decorative only. */
 .compass-stage {
 	/* Where the compass hub lands across the stage. Like the oak's --trunk-x:
 	   % is of the stage width, so the fixed 6rem nudges it right on narrow
@@ -28,9 +28,12 @@
 	}
 }
 
-.roadmap {
+/* The four domains, side by side. Not a sequence, so no step arrows; each
+   column lists its service areas. */
+.domains {
 	display: grid;
 	gap: var(--space-m) var(--gutter);
+	padding-block-end: var(--space-xl);
 
 	@media (min-width: 40rem) {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -39,77 +42,36 @@
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 
-	& li {
+	& > li {
 		display: flex;
 		flex-direction: column;
 		gap: 0.75rem;
 		padding-block-start: 1rem;
 		border-block-start: 2px solid var(--ink);
-	}
 
-	& .roadmap__step {
-		display: flex;
-		justify-content: space-between;
-		color: var(--accent);
-	}
-	& li:not(:last-child) .roadmap__step::after {
-		content: '→';
-		font-family: var(--sans);
-		color: var(--ink);
-	}
-
-	& h2 {
-		font-size: clamp(2rem, 1rem + 2vw, 3rem);
-	}
-	& a {
-		text-decoration: none;
-	}
-	& a:hover {
-		text-decoration: underline;
-		text-decoration-thickness: 1px;
-	}
-	& .roadmap__tag {
-		font-family: var(--serif);
-		font-style: italic;
-		font-size: var(--step-1);
-		line-height: 1.2;
-		color: var(--ink-soft);
-	}
-	& p:last-child {
-		font-size: var(--step--1);
-		color: var(--ink-soft);
-	}
-}
-
-/* Wealth Navigator: the four domains in the roadmap layout. Not a
-   sequence, so no step arrows; each column lists its service areas. */
-.roadmap--domains {
-	& li:not(:last-child) .roadmap__step::after {
-		content: none;
-	}
-
-	/* Four across: share rows so taglines and lists line up even when a
-	   name ("Investment Management") wraps to two lines. */
-	@media (min-width: 64rem) {
-		& > li {
+		/* Four across: share rows so taglines and lists line up even when a
+		   name ("Investment Management") wraps to two lines. */
+		@media (min-width: 64rem) {
 			display: grid;
 			grid-row: span 4;
 			grid-template-rows: subgrid;
 			row-gap: 0.75rem;
 		}
-		& .roadmap__items {
+	}
+
+	& h2 {
+		font-size: clamp(2rem, 1rem + 2vw, 3rem);
+	}
+
+	& ul {
+		margin-block-start: 0.5rem;
+
+		@media (min-width: 64rem) {
 			align-self: start; /* end each list at its last item */
 		}
 	}
-}
-
-.roadmap__items {
-	margin-block-start: 0.5rem;
-
-	& li {
-		display: block;
+	& ul li {
 		padding-block: 0.3rem;
-		border: 0; /* override the roadmap column's top rule */
 		font-size: var(--step--1);
 		line-height: 1.45;
 		color: var(--ink-soft);
@@ -120,4 +82,12 @@
 		font-size: 0.9em;
 		color: var(--ink-muted);
 	}
+}
+
+.domains-tag {
+	font-family: var(--serif);
+	font-style: italic;
+	font-size: var(--step-1);
+	line-height: 1.2;
+	color: var(--ink-soft);
 }

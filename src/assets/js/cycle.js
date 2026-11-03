@@ -7,12 +7,12 @@ const AUTO_MS = 6000;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
 document.querySelectorAll('[data-carousel]').forEach((root) => {
-	const stage = root.querySelector('.carousel__stage');
-	const slots = [...root.querySelectorAll('.carousel__slot')];
+	const stage = root.querySelector('.carousel-stage');
+	const slots = [...root.querySelectorAll('.carousel-slot')];
 	// controls live in the copy block, tied to the carousel by aria-controls
-	const next = document.querySelector(`.carousel__next[aria-controls="${root.id}"]`);
-	const toggle = document.querySelector(`.carousel__toggle[aria-controls="${root.id}"]`);
-	const status = root.querySelector('.carousel__status');
+	const next = document.querySelector(`.carousel-next[aria-controls="${root.id}"]`);
+	const toggle = document.querySelector(`.carousel-toggle[aria-controls="${root.id}"]`);
+	const status = root.querySelector('.carousel-status');
 	const n = slots.length;
 	let turn = 0; // never wraps, so the rotation always continues clockwise
 
@@ -64,7 +64,7 @@ document.querySelectorAll('[data-carousel]').forEach((root) => {
 		advance();
 		schedule(); // a fresh 6s after a manual advance
 		const active = slots[turn % n];
-		status.textContent = `Step ${(turn % n) + 1} of ${n}: ${active.querySelector('.carousel__name').textContent}`;
+		status.textContent = `Step ${(turn % n) + 1} of ${n}: ${active.querySelector('.carousel-name').textContent}`;
 	});
 
 	render();

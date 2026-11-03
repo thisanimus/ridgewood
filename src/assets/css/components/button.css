@@ -32,7 +32,7 @@
 	}
 }
 
-.button--ghost {
+.button-ghost {
 	background: transparent;
 	color: var(--blue);
 

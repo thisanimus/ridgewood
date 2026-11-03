@@ -43,7 +43,7 @@
 	--cy: calc(var(--R) + var(--h) / 2);
 }
 
-.carousel__stage {
+.carousel-stage {
 	--turn: 0;
 
 	position: relative;
@@ -51,7 +51,7 @@
 	block-size: calc(var(--cy) - var(--h) * var(--peek) / 2 + var(--relief));
 }
 
-.carousel__ring {
+.carousel-ring {
 	position: absolute;
 	inset-inline-start: calc(var(--cx) - var(--R));
 	inset-block-start: calc(var(--cy) - var(--R));
@@ -71,7 +71,7 @@
    gap glides over the top into the right gap (180° − 2g), while the one in
    the right gap carries on round the bottom, hidden below the hero, into
    the left gap (180° + 2g). Two advances make one full lap each. */
-.carousel__arrow {
+.carousel-arrow {
 	/* middle of the gap, measured down from the active card's centre */
 	--mid: calc((var(--h) * (1 - var(--peek)) / 2 + var(--R)) / 2);
 	/* sin g = (R − mid) / R; tan(atan2(a, b)) yields the unitless ratio a/b */
@@ -96,18 +96,18 @@
 }
 
 /* starts between 9 and 12 */
-.carousel__arrow--in {
+.carousel-arrow-in {
 	--start: var(--g);
 	--hop: calc(180deg - 2 * var(--g));
 }
 
 /* starts between 12 and 3 */
-.carousel__arrow--out {
+.carousel-arrow-out {
 	--start: calc(180deg - var(--g));
 	--hop: calc(180deg + 2 * var(--g));
 }
 
-.carousel__slot {
+.carousel-slot {
 	/* clockwise from 9 o'clock: active (pos 0) at 90deg = 12 o'clock */
 	--t: calc((var(--turn) - var(--i) + 1) * 90deg);
 
@@ -130,7 +130,7 @@
 	}
 }
 
-.carousel__face {
+.carousel-face {
 	position: relative; /* anchors the title link's overlay (below) */
 	display: flex;
 	flex-direction: column;
@@ -187,11 +187,7 @@
 	}
 }
 
-.carousel__num {
-	color: var(--accent);
-}
-
-.carousel__name {
+.carousel-name {
 	margin-block-start: 0.4rem;
 	font-size: clamp(1.75rem, 5cqi, 2.9rem);
 	line-height: 1;
@@ -212,7 +208,7 @@
 	}
 }
 
-.carousel__tag {
+.carousel-tag {
 	font-family: var(--serif);
 	font-style: italic;
 	font-size: clamp(1.05rem, 2.4cqi, 1.4rem);
@@ -220,21 +216,16 @@
 	color: var(--ink-soft);
 }
 
-.carousel__text {
+.carousel-text {
 	margin-block-start: auto;
 	font-size: var(--step--1);
 	line-height: 1.5;
 	color: var(--ink-soft);
 }
 
-.carousel__next,
-.carousel__toggle {
-	cursor: pointer;
-}
-
 /* Pause/Play: icon-only (named by aria-label), drawn in CSS from the
    button's state; square, matching the Next button's height */
-.carousel__toggle {
+.carousel-toggle {
 	inline-size: var(--control);
 	justify-content: center;
 	padding: 0;
@@ -256,14 +247,5 @@
 	&[data-state='paused']::before {
 		background: currentColor;
 		clip-path: polygon(10% 0, 100% 50%, 10% 100%); /* play triangle */
-	}
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.carousel__slot,
-	.carousel__arrow,
-	.carousel__face,
-	.carousel__face > * {
-		transition: none !important;
 	}
 }

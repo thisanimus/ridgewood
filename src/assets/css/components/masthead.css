@@ -1,13 +1,49 @@
 /* Masthead: logo lockup and primary nav */
 
-.masthead__bar {
+.masthead {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: end;
 	justify-content: space-between;
 	gap: var(--space-s) var(--space-m);
+	margin-inline: var(--gutter); /* margin, not padding, so the hairline stops at the gutters */
 	padding-block: var(--space-m) 1.25rem;
 	border-block-end: 1px solid var(--rule);
+
+	& nav ol {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem clamp(1rem, 2.2vw, 2rem);
+	}
+
+	& nav a {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 0.4em;
+		font-size: var(--step--1);
+		font-weight: 500;
+		letter-spacing: 0.01em;
+		text-decoration: none;
+		padding-block: 0.35rem;
+		border-block-end: 1px solid transparent;
+		transition:
+			color 0.2s ease,
+			border-color 0.2s ease;
+
+		&:hover {
+			border-color: var(--rule);
+		}
+		&[aria-current='page'] {
+			border-color: var(--ink);
+		}
+	}
+
+	/* off-site link (the client portal) */
+	& nav a[href^='http']::after {
+		content: '↗';
+		font-size: 0.85em;
+		margin-inline-start: 0.15em;
+	}
 }
 
 .brand {
@@ -16,44 +52,10 @@
 	gap: clamp(0.6rem, 1.2vw, 0.9rem);
 	text-decoration: none;
 
-	& .brand__seal {
+	& img:first-child {
 		inline-size: clamp(2.5rem, 4vw, 3.25rem);
 	}
-	& .brand__word {
+	& img:last-child {
 		inline-size: clamp(8.5rem, 13vw, 11rem);
 	}
-}
-
-.nav ol {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.4rem clamp(1rem, 2.2vw, 2rem);
-}
-
-.nav a {
-	display: inline-flex;
-	align-items: baseline;
-	gap: 0.4em;
-	font-size: var(--step--1);
-	font-weight: 500;
-	letter-spacing: 0.01em;
-	text-decoration: none;
-	padding-block: 0.35rem;
-	border-block-end: 1px solid transparent;
-	transition:
-		color 0.2s ease,
-		border-color 0.2s ease;
-
-	&:hover {
-		border-color: var(--rule);
-	}
-	&[aria-current='page'] {
-		border-color: var(--ink);
-	}
-}
-
-.nav__ext::after {
-	content: '↗';
-	font-size: 0.85em;
-	margin-inline-start: 0.15em;
 }

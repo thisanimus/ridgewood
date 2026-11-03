@@ -1,6 +1,5 @@
 /* 12-column grid; children choose their columns at the wide breakpoint */
 
-/* 12-column grid; children choose their columns at the wide breakpoint */
 .grid {
 	display: grid;
 	gap: var(--space-m) var(--gutter);
@@ -34,12 +33,6 @@
 	.grid > .span-8 {
 		grid-column: auto / span 8;
 	}
-	.grid > .span-9 {
-		grid-column: auto / span 9;
-	}
-	.grid > .start-4 {
-		grid-column-start: 4;
-	}
 	.grid > .start-5 {
 		grid-column-start: 5;
 	}
@@ -49,13 +42,7 @@
 	.grid > .start-7 {
 		grid-column-start: 7;
 	}
-	.grid > .start-8 {
-		grid-column-start: 8;
-	}
 	.grid > .start-9 {
 		grid-column-start: 9;
-	}
-	.grid > .start-10 {
-		grid-column-start: 10;
 	}
 }

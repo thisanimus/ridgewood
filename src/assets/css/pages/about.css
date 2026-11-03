@@ -1,22 +1,21 @@
 /* About: founder bios */
 
-/* Portrait coin: same height as the founder's name (title-m, line-height 1) */
-.bio__coin {
-	display: block;
-	inline-size: var(--step-3);
-	block-size: auto;
-	aspect-ratio: 1;
-	margin-block: 0 0.75rem;
-	border: 1px solid var(--ink-muted);
-	border-radius: 50%;
-	object-fit: cover;
-	object-position: 50% 50%;
-}
+.bio {
+	/* Portrait coin: same height as the founder's name (title-m, line-height 1) */
+	& img {
+		inline-size: var(--step-3);
+		aspect-ratio: 1;
+		margin-block-end: 0.75rem;
+		border: 1px solid var(--ink-muted);
+		border-radius: 50%;
+		object-fit: cover;
+	}
 
-.bio + .bio {
-	margin-block-start: var(--space-xl);
-	padding-block-start: var(--space-xl);
-	border-block-start: 1px solid var(--hair);
+	& + .bio {
+		margin-block-start: var(--space-xl);
+		padding-block-start: var(--space-xl);
+		border-block-start: 1px solid var(--hair);
+	}
 }
 
 .facts {

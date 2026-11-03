@@ -20,7 +20,3 @@
 .mt-l {
 	margin-block-start: var(--space-l);
 }
-
-.pb-xl {
-	padding-block-end: var(--space-xl);
-}
