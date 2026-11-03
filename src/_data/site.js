@@ -4,9 +4,11 @@ export default {
 	legalName: "Ridgewood Wealth Management LLC",
 	themeColor: "#1e355a",
 
+	// Year of the build: the footer copyright and the founders' years of experience
+	year: new Date().getFullYear(),
+
 	// Primary nav. `key` matches each page's `nav` front matter for aria-current.
 	nav: [
-		{ key: "home", label: "Home", href: "index.html" },
 		{ key: "about", label: "About", href: "about.html" },
 		{ key: "wealth-navigator", label: "Wealth Navigator", href: "wealth-navigator.html" },
 		{ key: "process", label: "Process", href: "our-process.html" },

@@ -1,0 +1,33 @@
+# Monthly rebuild: pushes an empty commit so Cloudflare Pages rebuilds the
+# site, refreshing build-time values (site.year: the footer copyright and the
+# founders' years of experience). Builds first so a broken build never deploys.
+name: Monthly rebuild
+
+on:
+  schedule:
+    - cron: "0 7 1 * *" # 07:00 UTC on the 1st (1–2am in Texas), so 1 January lands on the new year
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "chore: monthly rebuild ($(date -u +%Y-%m))"
+          git push

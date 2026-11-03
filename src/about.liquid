@@ -4,7 +4,13 @@ permalink: /about.html
 nav: about
 title: "About — Ridgewood Wealth Management"
 description: "Ridgewood Wealth Management was created in a way that puts the client first. Meet co-founders Brad Bartz and Justin Hunter, CFA."
+# Year each founder's career began; years of experience count up from here at build time
+careerStart:
+  brad: 2012
+  justin: 2011
 ---
+{%- assign bradYears = site.year | minus: careerStart.brad -%}
+{%- assign justinYears = site.year | minus: careerStart.justin %}
 <main id="main">
 	<section class="page-hero wrap grid" aria-labelledby="page-title">
 		<p class="label accent">The firm &amp; its founders</p>
@@ -35,7 +41,7 @@ description: "Ridgewood Wealth Management was created in a way that puts the cli
 				<dl class="facts">
 					<div>
 						<dt class="meta">Experience</dt>
-						<dd>14+ years</dd>
+						<dd>{{ bradYears }}+ years</dd>
 					</div>
 					<div>
 						<dt class="meta">Background</dt>
@@ -58,7 +64,7 @@ description: "Ridgewood Wealth Management was created in a way that puts the cli
 					way that reflects the client’s unique motivations, desires and vision for their financial future.
 				</p>
 				<p>
-					Brad has over 14 years of experience working with high net worth families as their trusted advisor.
+					Brad has over {{ bradYears }} years of experience working with high net worth families as their trusted advisor.
 					Prior to co-founding Ridgewood, he partnered with C-suite executives, university administrators, and
 					high net worth families as a financial consultant for Fidelity Investments. Brad experienced a high
 					level of success at Fidelity, measured by the numerous awards he received while there, most notably the
@@ -91,7 +97,7 @@ description: "Ridgewood Wealth Management was created in a way that puts the cli
 				<dl class="facts">
 					<div>
 						<dt class="meta">Experience</dt>
-						<dd>15+ years</dd>
+						<dd>{{ justinYears }}+ years</dd>
 					</div>
 					<div>
 						<dt class="meta">Designation</dt>
@@ -118,7 +124,7 @@ description: "Ridgewood Wealth Management was created in a way that puts the cli
 				</p>
 				<p>
 					He began his career as an accountant at a Fortune 500, publicly traded company and has since spent the
-					last 15+ years working across all areas of corporate finance and investments for a large insurance
+					last {{ justinYears }}+ years working across all areas of corporate finance and investments for a large insurance
 					agency and underwriter. During his tenure there, Justin performed investment research and analysis for
 					many years on a billion-dollar portfolio while also earning the Chartered Financial Analyst designation.
 					The CFA charter is the highest distinction in the industry and is widely considered to be the gold
