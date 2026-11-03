@@ -1,4 +1,4 @@
-const AUTO_MS = 6000;
+const AUTO_MS = 4000;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
 document.querySelectorAll('[data-carousel]').forEach((root) => {
@@ -30,10 +30,7 @@ document.querySelectorAll('[data-carousel]').forEach((root) => {
 
 	let timer;
 	let stopped = reducedMotion.matches;
-	const held = () =>
-		slots[turn % n].matches(':hover') ||
-		root.contains(document.activeElement) ||
-		document.activeElement === next;
+	const held = () => slots[turn % n].matches(':hover') || root.contains(document.activeElement);
 	const schedule = () => {
 		clearInterval(timer);
 		if (!stopped) timer = setInterval(() => held() || advance(), AUTO_MS);

@@ -257,7 +257,7 @@ Two advances make one full lap each.
 - **Controls** live in the copy block, tied to the carousel by `aria-controls`.
 - **`turn` never wraps,** so the rotation always continues clockwise.
 - **`advance()`** sets `.is-turning` in the same frame the positions change, because transitions only exist while it's set. The class stays on for 1s, until the motion settles.
-- **Auto-advance** is stopped by the Pause button. Reduced-motion users start stopped and can press Play to opt in, and it follows changes to that preference. It's also held while the active card is hovered, or while the carousel or the Next button has keyboard focus.
+- **Auto-advance** is stopped by the Pause button. Reduced-motion users start stopped and can press Play to opt in, and it follows changes to that preference. It's also held while the active card is hovered, or while its link has focus (the keyboard equivalent of hovering). Advancing while the link is focused would make it `inert` and drop focus. The Next button doesn't hold it: clicking a button focuses it, so a focus hold there stopped auto-advance after any click.
 - **Pressing Next** restarts the 6s timer and announces "Step n of 4: Name" in the live status region.
 
 ### `pages/contact.css`
