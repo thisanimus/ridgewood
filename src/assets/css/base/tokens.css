@@ -1,29 +1,20 @@
-/* Design tokens: colour, type families, fluid type and space scales */
-
 :root {
 	color-scheme: light;
 
-	/* Colour */
-	--blue: #1e355a; /* Ridgewood primary */
+	--blue: #1e355a;
 	--paper: #f1ece3;
 	--paper-deep: #e8dfd1;
 	--oxblood: #9a3324;
 	--ink: var(--blue);
 	--ink-soft: color-mix(in oklab, var(--blue) 82%, var(--paper));
-	/* Relative to the surrounding text colour (resolved where it's used), so muted
-	   text follows its parent — e.g. a link's subtitle turns oxblood on hover. */
 	--ink-muted: color-mix(in oklab, currentColor 68%, transparent);
-	/* Rules are also relative to the surrounding text colour, so they follow
-	   their context (e.g. a link's divider tints oxblood on hover) */
 	--rule: color-mix(in oklab, currentColor 42%, transparent);
 	--hair: color-mix(in oklab, currentColor 16%, transparent);
 	--accent: var(--oxblood);
 
-	/* Families */
 	--serif: 'Instrument Serif', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
 	--sans: 'IBM Plex Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-	/* Fluid type scale */
 	--step--2: 0.6875rem;
 	--step--1: 0.8125rem;
 	--step-0: clamp(1rem, 0.96rem + 0.18vw, 1.0938rem);
@@ -34,7 +25,6 @@
 	--step-5: clamp(3.25rem, 1.9rem + 6.2vw, 8.25rem);
 	--step-6: clamp(4.25rem, 1.8rem + 11vw, 13.5rem);
 
-	/* Space */
 	--frame: clamp(0.625rem, 1.6vw, 1.5rem);
 	--gutter: clamp(1.25rem, 3.2vw, 3rem);
 	--space-s: clamp(1rem, 0.8rem + 1vw, 1.5rem);

@@ -1,7 +1,4 @@
-/* About: founder bios */
-
 .bio {
-	/* Portrait coin: same height as the founder's name (title-m, line-height 1) */
 	& img {
 		inline-size: var(--step-3);
 		aspect-ratio: 1;

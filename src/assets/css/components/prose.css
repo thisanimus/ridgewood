@@ -1,5 +1,3 @@
-/* Running text: lede, statement, serif text, prose, drop cap */
-
 .lede {
 	font-family: var(--serif);
 	font-size: var(--step-2);
@@ -20,7 +18,6 @@
 	}
 }
 
-/* Serif running text (About intro, Legal) */
 .serif-text {
 	font-family: var(--serif);
 	font-size: var(--step-2);
@@ -52,7 +49,6 @@
 	}
 }
 
-/* Drop cap, where the browser supports real initial letters */
 @supports (initial-letter: 3) or (-webkit-initial-letter: 3) {
 	.dropcap::first-letter {
 		-webkit-initial-letter: 3;

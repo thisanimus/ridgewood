@@ -1,5 +1,3 @@
-/* Contact: title and subtitle beside the message form */
-
 .contact {
 	padding-block: var(--space-xl);
 	row-gap: var(--space-l);
@@ -9,13 +7,11 @@
 		margin-block-start: var(--space-m);
 	}
 
-	/* Form: framed sans-serif fields, stacked */
 	& form {
 		display: grid;
 		gap: var(--space-m);
 	}
 
-	/* once sent, the form hides behind its confirmation */
 	&:has(#message-sent:target) form {
 		display: none;
 	}
@@ -27,7 +23,6 @@
 		gap: var(--space-s) var(--space-m);
 	}
 
-	/* Off-screen for people, still in the form for bots */
 	& .honeypot {
 		position: absolute;
 		inset-inline-start: -100vw;
@@ -61,7 +56,7 @@
 		&:focus {
 			outline: none;
 			border-color: var(--accent);
-			box-shadow: inset 0 0 0 1px var(--accent); /* thickens the frame to 2px */
+			box-shadow: inset 0 0 0 1px var(--accent);
 		}
 		&:user-invalid {
 			border-color: var(--accent);
@@ -77,8 +72,6 @@
 	}
 }
 
-/* Confirmations: shown when the Function redirects back with #message-sent
-   or #message-error */
 .form-status {
 	display: none;
 	margin-block-end: var(--space-m);

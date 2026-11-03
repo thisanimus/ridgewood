@@ -1,5 +1,3 @@
-/* Display headings. Emphasis in the largest sizes is set in oxblood. */
-
 .display {
 	font-size: var(--step-5);
 	line-height: 0.92;

@@ -1,5 +1,3 @@
-/* Section head row: number, hairline, label */
-
 .section-head {
 	display: flex;
 	align-items: baseline;

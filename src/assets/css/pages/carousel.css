@@ -1,40 +1,17 @@
-/* Process: the cycle carousel.
-   The four steps ride a circular track. The active step sits at 12 o'clock,
-   top of the stage, with a little relief off the right edge. The next step
-   waits at 9 o'clock, below-left, its top edge peeking in (shrunk, blank);
-   the previous (3) and opposite (6) are hidden. Each slot is placed with
-   rotate → translate → counter-rotate, so when --turn changes the angles
-   interpolate and the cards glide clockwise along the arc, staying upright.
-   assets/js/cycle.js only increments --turn. */
-
 .carousel {
 	container: carousel / inline-size;
 	align-self: end;
-	margin-inline-end: calc(-1 * var(--gutter)); /* bleed to the frame */
+	margin-inline-end: calc(-1 * var(--gutter));
 }
 
-/* Geometry. Declared on the carousel's children so cqi resolves against
-   the carousel's width (which bleeds to the frame). No breakpoints: every
-   value scales continuously with min()/max()/clamp(). */
 .carousel > * {
-	--relief: clamp(0.75rem, 2.5cqi, 1.5rem); /* active card's inset from the right edge */
-	/* Card width, continuous: 60% of the carousel on small screens (room for
-	   the next card to peek in), growing to fill all but 16rem of it, capped
-	   at 25.5rem. The two terms cross at a 40rem-wide carousel. */
+	--relief: clamp(0.75rem, 2.5cqi, 1.5rem);
 	--w: min(25.5rem, max(60cqi, 100cqi - 16rem));
-	--h: max(14rem, calc(var(--w) * 0.42)); /* card height */
-	--peek: 0.86; /* scale of the non-active cards */
-	--gap: 0.1; /* minimum gap between cards, as a fraction of card height */
-	/* Smallest collision-free radius: the 9 o'clock card (scaled by --peek)
-	   must clear the active card vertically — h/2 + peek·h/2 — plus the gap. */
+	--h: max(14rem, calc(var(--w) * 0.42));
+	--peek: 0.86;
+	--gap: 0.1;
 	--R-min: calc(var(--h) * ((1 + var(--peek)) / 2 + var(--gap)));
-	/* Grows with the window: the minimum below 40rem, up to 2× (~1580px window) */
 	--R: clamp(var(--R-min), calc(var(--R-min) + (100vw - 40rem) * 0.25), calc(var(--R-min) * 2));
-	/* Track centre: under the active card, which is top-aligned and hugs the
-	   lede — its left edge on the carousel's left edge. Where there's little
-	   room to the left (100vw − 100cqi: the stacked, single-column layout) it
-	   shifts right just enough to keep the 9 o'clock card on screen, but never
-	   past --relief from the right edge. */
 	--cx: clamp(
 		var(--w) / 2,
 		var(--R) - (100vw - 100cqi) + 2rem,
@@ -47,7 +24,6 @@
 	--turn: 0;
 
 	position: relative;
-	/* down to the 9/3 cards' top edges, plus the same measure as --relief */
 	block-size: calc(var(--cy) - var(--h) * var(--peek) / 2 + var(--relief));
 }
 
@@ -61,20 +37,8 @@
 	border-radius: 50%;
 }
 
-/* Arrowheads sit on the track in the gaps either side of the active card:
-   where the ring crosses the middle of the gap below it. (Angles are
-   measured clockwise from 9 o'clock.) Drawn pointing up (the clockwise
-   tangent at 9 o'clock) and rotated about the centre, they always point
-   clockwise along the path. Painted before the cards, so they pass behind
-   them.
-   On each advance they leapfrog, always clockwise: the arrow in the left
-   gap glides over the top into the right gap (180° − 2g), while the one in
-   the right gap carries on round the bottom, hidden below the hero, into
-   the left gap (180° + 2g). Two advances make one full lap each. */
 .carousel-arrow {
-	/* middle of the gap, measured down from the active card's centre */
 	--mid: calc((var(--h) * (1 - var(--peek)) / 2 + var(--R)) / 2);
-	/* sin g = (R − mid) / R; tan(atan2(a, b)) yields the unitless ratio a/b */
 	--g: asin(tan(atan2(calc(var(--R) - var(--mid)), var(--R))));
 	--laps: round(down, calc(var(--turn) / 2), 1);
 	--odd: mod(var(--turn), 2);
@@ -83,7 +47,7 @@
 	position: absolute;
 	inset-inline-start: var(--cx);
 	inset-block-start: var(--cy);
-	inline-size: 0.55rem; /* long and narrow, so the tip reads at any angle */
+	inline-size: 0.55rem;
 	block-size: 1rem;
 	transform-origin: 0 0;
 	transform: rotate(var(--a)) translateX(calc(-1 * var(--R))) translate(-50%, -50%);
@@ -95,20 +59,17 @@
 	}
 }
 
-/* starts between 9 and 12 */
 .carousel-arrow-in {
 	--start: var(--g);
 	--hop: calc(180deg - 2 * var(--g));
 }
 
-/* starts between 12 and 3 */
 .carousel-arrow-out {
 	--start: calc(180deg - var(--g));
 	--hop: calc(180deg + 2 * var(--g));
 }
 
 .carousel-slot {
-	/* clockwise from 9 o'clock: active (pos 0) at 90deg = 12 o'clock */
 	--t: calc((var(--turn) - var(--i) + 1) * 90deg);
 
 	position: absolute;
@@ -119,8 +80,6 @@
 	transform-origin: 0 0;
 	transform: rotate(var(--t)) translateX(calc(-1 * var(--R))) rotate(calc(-1 * var(--t))) translate(-50%, -50%);
 
-	/* Ease only while advancing (cycle.js sets .is-turning), so resizing
-	   the window snaps the geometry rather than animating it. */
 	.is-turning & {
 		transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
 	}
@@ -131,7 +90,7 @@
 }
 
 .carousel-face {
-	position: relative; /* anchors the title link's overlay (below) */
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	gap: 0.4rem;
@@ -140,7 +99,6 @@
 	border: 1px solid var(--rule);
 	background: var(--paper-deep);
 	scale: var(--peek);
-	/* at rest only the hover lift changes scale; advancing overrides this */
 	transition:
 		scale 0.35s ease,
 		border-color 0.35s ease;
@@ -151,9 +109,6 @@
 			opacity 0.45s ease;
 	}
 
-	/* The 6 o'clock card stays hidden. The previous one (pos 1) rotates on to
-	   3 o'clock, where its corner still shows — shrunk and blank like the
-	   9 o'clock card. Only the active card shows text. */
 	[data-pos='2'] > & {
 		opacity: 0;
 	}
@@ -173,10 +128,9 @@
 		}
 	}
 	.is-turning [data-pos='0'] > & > * {
-		transition-delay: 0.45s; /* text fades in as the card arrives */
+		transition-delay: 0.45s;
 	}
 
-	/* The whole active card is the link: lift it on hover or keyboard focus */
 	[data-pos='0']:not(.is-turning *) > &:is(:hover, :has(a:focus-visible)) {
 		scale: 1.03;
 		border-color: var(--ink);
@@ -195,15 +149,13 @@
 	& a {
 		text-decoration: none;
 
-		/* Stretched link: an overlay makes the entire card clickable while
-		   the link's accessible name stays just the step name. */
 		&::after {
 			content: '';
 			position: absolute;
 			inset: 0;
 		}
 		&:focus-visible {
-			outline: none; /* drawn around the whole card instead */
+			outline: none;
 		}
 	}
 }
@@ -223,8 +175,6 @@
 	color: var(--ink-soft);
 }
 
-/* Pause/Play: icon-only (named by aria-label), drawn in CSS from the
-   button's state; square, matching the Next button's height */
 .carousel-toggle {
 	inline-size: var(--control);
 	justify-content: center;
@@ -242,10 +192,10 @@
 			currentColor 0 35%,
 			transparent 35% 65%,
 			currentColor 65%
-		); /* pause bars */
+		);
 	}
 	&[data-state='paused']::before {
 		background: currentColor;
-		clip-path: polygon(10% 0, 100% 50%, 10% 100%); /* play triangle */
+		clip-path: polygon(10% 0, 100% 50%, 10% 100%);
 	}
 }

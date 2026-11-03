@@ -1,5 +1,3 @@
-/* Home: hero with the oak, trust, principles, call to action */
-
 .hero {
 	position: relative;
 	isolation: isolate;
@@ -9,27 +7,18 @@
 	justify-content: end;
 	min-block-size: clamp(34rem, 47vw, 70rem);
 	padding-block: var(--space-xl) var(--space-l);
-	background: var(--paper); /* backdrop for the photo's multiply blend */
+	background: var(--paper);
 
 	& .display {
 		margin-block-start: var(--space-m);
 		max-inline-size: 15ch;
 	}
 	& .display + h2 {
-		margin-block-start: var(--space-m); /* clears the headline's descenders */
+		margin-block-start: var(--space-m);
 	}
 }
 
-/* Lone oak, right-aligned. The photo fills the hero's height and is pinned
-     by its trunk (71.3% across the source image), so the canopy may bleed off
-     the right edge. Masks fade it out behind the type.
-     Monochrome blue: the grayscale photo is screened over a blue fill
-     (shadows → primary blue, highlights → white), then multiplied onto the
-     paper so the whites drop out to cream. */
 .hero-media {
-	/* Where the trunk lands across the hero. % is of the hero's width, so the
-       fixed 5rem is a bigger share on narrow screens and nudges the trunk right:
-       ~95% on phones → ~85% on tablets → ~80% on desktop → 78% very wide. */
 	--trunk-x: clamp(60%, 60% + 10rem, 105%);
 
 	position: absolute;
@@ -61,13 +50,9 @@
 	}
 }
 
-/* Faint parallax: the oak drifts down at ~15% of the scroll speed over the
-   first screenful, so it lags behind the type. Anchored to scroll 0, it rests
-   exactly where it's placed above, and the gap it opens at the top always
-   stays above the viewport. */
 @keyframes oak-drift {
 	to {
-		translate: -71.3% 15vh; /* keeps the trunk anchor from .hero-media img */
+		translate: -71.3% 15vh;
 	}
 }
 
@@ -92,7 +77,7 @@
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 	@media (min-width: 64rem) {
-		max-inline-size: min(40rem, 46%); /* stay clear of the canopy */
+		max-inline-size: min(40rem, 46%);
 	}
 
 	& a {

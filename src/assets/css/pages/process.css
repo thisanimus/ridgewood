@@ -1,9 +1,7 @@
-/* Process: hero intro and controls, step detail sections */
-
 .process-hero {
 	align-items: start;
-	padding-block-end: 0; /* the carousel sits flush on the hero's bottom edge */
-	overflow: clip; /* the carousel is clipped only where it meets the hero's edges */
+	padding-block-end: 0;
+	overflow: clip;
 
 	& .lede {
 		padding-block-start: 0.5rem;
@@ -17,7 +15,7 @@
 }
 
 .process-hero-controls {
-	--control: 3rem; /* shared height; the icon-only toggle is this square */
+	--control: 3rem;
 
 	display: flex;
 	flex-wrap: wrap;

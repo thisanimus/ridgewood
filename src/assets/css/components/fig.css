@@ -1,6 +1,3 @@
-/* Figure cards (after the reference’s FIG. 01 / FIG. 02 panels).
-   Home: number, big title, footnote. Process: stage bar, heading, body. */
-
 .figs {
 	display: grid;
 	gap: clamp(1rem, 2vw, 1.5rem);

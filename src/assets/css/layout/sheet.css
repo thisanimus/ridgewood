@@ -1,8 +1,6 @@
-/* Page frame (the bordered sheet), wrap and section rhythm */
-
 body {
 	max-inline-size: 110rem;
-	margin: var(--frame) max(var(--frame), (100% - 110rem) / 2); /* centred once capped */
+	margin: var(--frame) max(var(--frame), (100% - 110rem) / 2);
 	border: 1px solid var(--rule);
 	min-block-size: calc(100dvh - 2 * var(--frame));
 	display: flex;

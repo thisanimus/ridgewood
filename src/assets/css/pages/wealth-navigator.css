@@ -1,11 +1,4 @@
-/* Wealth Navigator: compass backdrop and the four domain columns */
-
-/* The original site's compass rose, gigantic and faint, underlaying both the
-   hero and the domain list. Decorative only. */
 .compass-stage {
-	/* Where the compass hub lands across the stage. Like the oak's --trunk-x:
-	   % is of the stage width, so the fixed 6rem nudges it right on narrow
-	   screens: ~92% on phones → ~77% on tablets → ~72% on desktop. */
 	--compass-x: clamp(70%, 65% + 6rem, 92%);
 
 	position: relative;
@@ -16,9 +9,9 @@
 		content: '';
 		position: absolute;
 		z-index: -1;
-		inset-block-start: 0; /* pinned to the top of the stage */
+		inset-block-start: 0;
 		inset-inline-start: var(--compass-x);
-		block-size: min(97.75%, 144.5vw); /* 85% of the original 115% / 170vw */
+		block-size: min(97.75%, 144.5vw);
 		aspect-ratio: 1;
 		translate: -50% 0;
 		rotate: 12deg;
@@ -28,8 +21,6 @@
 	}
 }
 
-/* The compass turns slowly clockwise as the page scrolls: 12deg at the top
-   of the page to 20deg at the bottom. */
 @keyframes compass-turn {
 	to {
 		rotate: 20deg;
@@ -45,8 +36,6 @@
 	}
 }
 
-/* The four domains, side by side. Not a sequence, so no step arrows; each
-   column lists its service areas. */
 .domains {
 	display: grid;
 	gap: var(--space-m) var(--gutter);
@@ -66,8 +55,6 @@
 		padding-block-start: 1rem;
 		border-block-start: 2px solid var(--ink);
 
-		/* Four across: share rows so taglines and lists line up even when a
-		   name ("Investment Management") wraps to two lines. */
 		@media (min-width: 64rem) {
 			display: grid;
 			grid-row: span 4;
@@ -84,7 +71,7 @@
 		margin-block-start: 0.5rem;
 
 		@media (min-width: 64rem) {
-			align-self: start; /* end each list at its last item */
+			align-self: start;
 		}
 	}
 	& ul li {

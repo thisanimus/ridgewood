@@ -1,11 +1,6 @@
-/* Masthead: logo lockup, primary nav and the client portal link */
-
 .masthead {
-	/* Spacing between nav links, and between the nav and Clients */
 	--nav-gap: clamp(1rem, 2.2vw, 2rem);
 
-	/* Narrow screens: the logo and Clients share the top row; the site nav
-	   drops below, full width */
 	display: grid;
 	grid-template-columns: auto auto;
 	grid-template-areas:
@@ -14,11 +9,10 @@
 	align-items: end;
 	justify-content: space-between;
 	gap: var(--space-s) var(--nav-gap);
-	margin-inline: var(--gutter); /* margin, not padding, so the hairline stops at the gutters */
+	margin-inline: var(--gutter);
 	padding-block: var(--space-m) 1.25rem;
 	border-block-end: 1px solid var(--rule);
 
-	/* Wide enough for one row: logo, then the nav and Clients pushed right */
 	@media (min-width: 40rem) {
 		grid-template-columns: auto minmax(0, 1fr) auto;
 		grid-template-areas: 'brand nav clients';
@@ -67,8 +61,6 @@
 		}
 	}
 
-	/* Client portal: a compact ghost button. Same vertical padding and bottom
-	   border as the nav links, so its text shares their baseline. */
 	& .masthead-clients {
 		padding-inline: 0.9rem 0.8rem;
 		border: 1px solid var(--blue);
@@ -83,7 +75,6 @@
 			color: var(--paper);
 		}
 
-		/* off-site link */
 		&::after {
 			content: '↗';
 			font-size: 0.85em;
