@@ -72,8 +72,10 @@
 	padding-block-start: 1rem;
 	border-block-start: 1px solid var(--ink);
 
-	& .meta {
+	& h3 {
 		margin-block-end: 1rem;
+		font-style: italic;
+		font-size: var(--step-2);
 	}
 	& p:last-child {
 		font-family: var(--serif);

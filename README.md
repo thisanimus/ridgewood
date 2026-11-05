@@ -61,7 +61,7 @@ Each style is split into three files by `unicode-range`, so the browser only dow
 Where ranges overlap, the face declared later wins, so `latin-extra` follows `latin-ext`. Faces are declared in this order for each style: `latin-ext`, `latin-extra`, `latin`.
 
 - IBM Plex Sans: italic 400 and normal 400–600. It's a variable font, so one file per style covers weights 400–600.
-- Instrument Serif: italic 400 and normal 400.
+- EB Garamond: italic and normal, 400–800. Variable, like Plex, so one file per style covers the whole weight range.
 
 ### `base/tokens.css`
 
@@ -71,7 +71,24 @@ Design tokens: colour, type families, fluid type and space scales.
 - **`--ink-muted`** is relative to the surrounding text colour (`currentColor`, resolved where it's used). Muted text therefore follows its parent: a link's subtitle turns oxblood on hover.
 - **`--rule`** is relative to the surrounding text colour too, so rules follow their context: a link's divider tints oxblood on hover.
 - **Families.** `--serif` and `--sans`.
-- **Fluid type scale.** `--step--2` … `--step-6`.
+- **Fluid type scale.** Eight steps. Each role uses one step, with no per-component multipliers. Sizes within about 10% of each other share a step.
+
+  | Step | Size (rem) | Used for |
+  | --- | --- | --- |
+  | `--step--2` | 0.6875 | Labels, meta, buttons |
+  | `--step--1` | 0.8125 | Small sans text: fine print, card body, lists |
+  | `--step-0` | 1 – 1.09 | Body text |
+  | `--step-1` | 1.25 – 1.5 | Small serif: `.title-s`, nav links, footnotes, TOC, facts, “We are guided by”, footer phone |
+  | `--step-2` | 1.6 – 2.25 | `.title-m`, `.fig-heading`, Wealth Navigator heads, lede, serif text, `.statement`, CTA phone, Communicate subheads (`.cadence h3`) |
+  | `--step-3` | 2.06 – 4.13 | `.title-l`, “foundational principles” |
+  | `--step-4` | 2.44 – 6.19 | `.display` (home hero) |
+  | `--step-5` | 3.19 – 10.13 | `.title-xl` (page titles) |
+
+  The top three steps were set while the serif was Playfair Display, which is much wider than the Instrument Serif the scale started with. EB Garamond is narrower than Playfair, so these may want revisiting.
+
+  Two kinds of type are deliberately off the scale:
+  - **Card titles** (`.fig-title`, `.carousel-name`, `.carousel-tag`) are sized to their card (`cqi`), not the page, so the longest names fit the narrowest card.
+  - **The “4” numeral** in the principles title is an ornament, larger than any step.
 - **Space.** `--frame`, `--gutter`, `--space-*`.
 
 ### `base/elements.css`
@@ -128,7 +145,7 @@ Small type: labels, meta figures, colour helpers.
 
 ### `components/headings.css`
 
-Display headings. Emphasis in the largest sizes is set in oxblood.
+Heading sizes, one step each: `.title-s` → `--step-1`, `.title-m` → `--step-2`, `.title-l` → `--step-3`, `.display` → `--step-4`, `.title-xl` → `--step-5`. Headings are set at weight 400 (see `elements.css`). Words in oxblood use the `.accent` utility.
 
 ### `components/prose.css`
 
@@ -149,7 +166,7 @@ Underlined arrow link.
 
 Figure cards, after the reference's FIG. 01 / FIG. 02 panels.
 
-- Home: number, big title, footnote.
+- Home: number, big title, footnote. The title is sized to the card (`cqi`), so the widest uppercase names (“Unbiased Advice”, “Fiduciary Care”) fit.
 - Process: stage bar, heading, body.
 
 ### `components/section-head.css`

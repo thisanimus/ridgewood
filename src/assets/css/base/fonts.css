@@ -53,55 +53,55 @@
 }
 
 @font-face {
-	font-family: 'Instrument Serif';
+	font-family: 'EB Garamond';
 	font-style: italic;
-	font-weight: 400;
+	font-weight: 400 800;
 	font-display: auto;
-	src: url('../../fonts/instrument-serif-italic-latin-ext.woff2') format('woff2');
+	src: url('../../fonts/eb-garamond-italic-400-800-latin-ext.woff2') format('woff2');
 	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
-	font-family: 'Instrument Serif';
+	font-family: 'EB Garamond';
 	font-style: italic;
-	font-weight: 400;
+	font-weight: 400 800;
 	font-display: auto;
-	src: url('../../fonts/instrument-serif-italic-latin-extra.woff2') format('woff2');
+	src: url('../../fonts/eb-garamond-italic-400-800-latin-extra.woff2') format('woff2');
 	unicode-range: U+00A1-00A3, U+00A5, U+00A8, U+00AA-00AB, U+00AE-00B0, U+00B4, U+00B6, U+00B8, U+00BA-00BB, U+00BF-00FF, U+0102, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+0300-0301, U+0303-0304, U+0308, U+201A, U+201E, U+2039-203A, U+20AC;
 }
 
 @font-face {
-	font-family: 'Instrument Serif';
+	font-family: 'EB Garamond';
 	font-style: italic;
-	font-weight: 400;
+	font-weight: 400 800;
 	font-display: auto;
-	src: url('../../fonts/instrument-serif-italic-latin.woff2') format('woff2');
+	src: url('../../fonts/eb-garamond-italic-400-800-latin.woff2') format('woff2');
 	unicode-range: U+0020-007E, U+00A0, U+00A7, U+00A9, U+00B7, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2122, U+2212;
 }
 
 @font-face {
-	font-family: 'Instrument Serif';
+	font-family: 'EB Garamond';
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 400 800;
 	font-display: auto;
-	src: url('../../fonts/instrument-serif-normal-latin-ext.woff2') format('woff2');
+	src: url('../../fonts/eb-garamond-normal-400-800-latin-ext.woff2') format('woff2');
 	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
-	font-family: 'Instrument Serif';
+	font-family: 'EB Garamond';
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 400 800;
 	font-display: auto;
-	src: url('../../fonts/instrument-serif-normal-latin-extra.woff2') format('woff2');
+	src: url('../../fonts/eb-garamond-normal-400-800-latin-extra.woff2') format('woff2');
 	unicode-range: U+00A1-00A3, U+00A5, U+00A8, U+00AA-00AB, U+00AE-00B0, U+00B4, U+00B6, U+00B8, U+00BA-00BB, U+00BF-00FF, U+0102, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+0300-0301, U+0303-0304, U+0308, U+201A, U+201E, U+2039-203A, U+20AC;
 }
 
 @font-face {
-	font-family: 'Instrument Serif';
+	font-family: 'EB Garamond';
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 400 800;
 	font-display: auto;
-	src: url('../../fonts/instrument-serif-normal-latin.woff2') format('woff2');
+	src: url('../../fonts/eb-garamond-normal-400-800-latin.woff2') format('woff2');
 	unicode-range: U+0020-007E, U+00A0, U+00A7, U+00A9, U+00B7, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2122, U+2212;
 }
