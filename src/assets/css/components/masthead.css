@@ -13,7 +13,7 @@
 	padding-block: var(--space-m) 1.25rem;
 	border-block-end: 1px solid var(--rule);
 
-	@media (min-width: 40rem) {
+	@media (min-width: 48rem) {
 		grid-template-columns: auto minmax(0, 1fr) auto;
 		grid-template-areas: 'brand nav clients';
 		justify-content: stretch;
@@ -90,6 +90,6 @@
 
 	& svg {
 		inline-size: auto;
-		block-size: clamp(2.5rem, 4vw, 3.25rem);
+		block-size: clamp(3.5rem, 2rem + 2vw, 4rem);
 	}
 }
